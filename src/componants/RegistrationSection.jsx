@@ -6,7 +6,7 @@ const RegistrationSection = () => {
 
   return (
     <div className='w-full'>
-        <div className='px-4 py-2 bg-button1-color rounded-lg border'>
+        <div className='px-2 py-2 bg-button1-color rounded-lg border'>
             <h2 className='text-1xl sm:text-3xl lg:text-4xl mb-2'>Registration</h2>
             
             <div className='space-y-4'>
