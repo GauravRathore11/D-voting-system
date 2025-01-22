@@ -13,7 +13,7 @@ const VotingSection = () => {
           <span className='text-button1-color'>
             Vote for a Candidate {" "}
           </span>
-          using their public address/id
+          using their public address
         </h1>
 
         <input type="text" placeholder='public id/address of candidate' className={inputStyle} />
