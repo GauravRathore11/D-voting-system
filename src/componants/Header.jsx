@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Description } from '../constants/util';
+import { useContext } from 'react';
+import { WalletContext } from '../constants/walletContext';
 
 const Header = () => {
+
+  const { connectWallet, userAddress } = useContext(WalletContext);
+
   return (
     <div className='p-2'>
       <div className='rounded-lg top-0 w-full bg-gradient-to-r from-button1-color to-nav1-color py-4 px-4'>
         
-        <div className='flex justify-between'>
-          <span className='text-semibold text-1xl sm:text-4xl lg:text-5xl'>
+        <div className='flex flex-wrap justify-between items-center'>
+          <span className='text-semibold text-1xl sm:text-4xl lg:text-5xl w-full lg:w-2/3'>
              <span className='text-semibold text-1xl sm:text-4xl lg:text-5xl bg-nav2-color text-transparent bg-clip-text'>Decentralized {" "}</span>
              Voting System</span>
-          <a href="#" className='h-fit py-2 px-3 bg-button1-color rounded-lg shadow-lg text-sm hover:bg-green-900'>Connect Wallet</a>
+          
+          <div className='w-full lg:w-1/3 flex justify-start lg:justify-end'>
+            {userAddress ? (
+              <p className='bg-white py-1 px-2 rounded-lg text-[10px] sm:text-sm lgext-sm text-neutral-600 w-full'>Connected Address : {userAddress}</p>
+            ) : (
+               <button onClick={connectWallet} className='h-fit py-2 px-3 bg-button1-color rounded-lg shadow-lg text-sm hover:bg-green-900'>Connect Wallet</button>
+             )
+            }
+          </div>
+
         </div>
 
         <div className='p-1'>
-          <p className='text-para-color'>Welcome to our Decentralized Voting System, where democracy meets blockchain technology!<br /> This innovative platform ensures secure, transparent, and tamper-proof elections by leveraging the power of decentralization. With an intuitive interface and a robust underlying system, we aim to revolutionize the way elections are conducted.</p>
+          <p className='text-para-color'>{Description}</p>
         </div>
 
       </div>

@@ -12,7 +12,7 @@ const RegistrationSection = () => {
             <div className='space-y-4'>
               <input type="text" placeholder='Name' className={inputStyle} />
               <input type="number" placeholder='Age' className={inputStyle} />
-              <input type="text" placeholder='Address' className={inputStyle} />
+              <input type="text" placeholder='Public address/id' className={inputStyle} />
               <div className='flex justify-start items-center space-x-3'>
                 <button className='px-3 py-1 bg-green-600 rounded-lg border hover:bg-green-900'>Submit</button>
                 <p>{registrationUpdate}</p>

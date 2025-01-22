@@ -3,7 +3,7 @@ import { userInstructions } from '../constants/util'
 
 const Instructions = () => {
   return (
-    <div className='text-button1-color bg-para-color w-full  rounded-lg text-md sm:text-3xl lg:text-4xl p-3 mb-2'>
+    <div className='border bg-slate-800 w-full  rounded-lg text-md sm:text-3xl lg:text-4xl p-3 mb-2'>
 
       <h1>Instructions</h1>
       

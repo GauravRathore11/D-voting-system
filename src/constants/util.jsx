@@ -30,3 +30,5 @@ export const Candidates = [
         votes : 36572
     },
 ]
+
+export const Description = "Welcome to our Decentralized Voting System, where democracy meets blockchain technology!<br /> This innovative platform ensures secure, transparent, and tamper-proof elections by leveraging the power of decentralization. With an intuitive interface and a robust underlying system, we aim to revolutionize the way elections are conducted."
