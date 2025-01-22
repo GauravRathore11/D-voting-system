@@ -9,7 +9,7 @@ const Header = () => {
           <span className='text-semibold text-1xl sm:text-4xl lg:text-5xl'>
              <span className='text-semibold text-1xl sm:text-4xl lg:text-5xl bg-nav2-color text-transparent bg-clip-text'>Decentralized {" "}</span>
              Voting System</span>
-          <a href="#" className='py-2 px-3 bg-button1-color rounded-lg shadow-lg text-sm sm:text-1/2xl border lg:text-2xl hover:bg-green-900'>Connect Wallet</a>
+          <a href="#" className='h-fit py-2 px-3 bg-button1-color rounded-lg shadow-lg text-sm hover:bg-green-900'>Connect Wallet</a>
         </div>
 
         <div className='p-1'>

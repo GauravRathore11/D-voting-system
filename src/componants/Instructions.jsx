@@ -1,5 +1,4 @@
 import React from 'react'
-import voting from '../assets/voting.png'
 import { userInstructions } from '../constants/util'
 
 const Instructions = () => {

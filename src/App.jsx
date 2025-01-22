@@ -4,6 +4,7 @@ import RegistrationSection from './componants/RegistrationSection';
 import Instructions from './componants/Instructions';
 import Leaderboard from './componants/Leaderboard';
 import BecomeCandidate from './componants/BecomeCandidate';
+import VotingSection from './componants/VotingSection';
 
 function App() {
   return (
@@ -15,7 +16,12 @@ function App() {
           <RegistrationSection />
           <BecomeCandidate />
         </div>
-        <Leaderboard />
+
+        <div className="w-full space-y-4">
+          <VotingSection />
+          <Leaderboard />
+        </div>
+        
       </div>
       
     </>

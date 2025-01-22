@@ -23,4 +23,10 @@ export const Candidates = [
         address : "0x837kjbjbdcfoih23u09dhinoi3ndii3dio",
         votes : 329889
     },
+    {
+        name : "Mayank Chandel",
+        age : 34,
+        address : "0x837kjbjbdcfoih23u09dhinoi3ndii3dio",
+        votes : 36572
+    },
 ]
