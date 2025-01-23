@@ -18,7 +18,7 @@ const Header = () => {
           
           <div className='w-full lg:w-1/3 flex justify-start lg:justify-end'>
             {userAddress ? (
-              <p className='bg-white py-1 px-2 rounded-lg text-[10px] sm:text-sm lgext-sm text-neutral-600 w-full'>Connected Address : {userAddress}</p>
+              <p className='bg-white py-1 px-2 rounded-lg text-[10px] sm:text-sm lgext-sm text-neutral-600 w-fit'>Connected Address : {userAddress}</p>
             ) : (
                <button onClick={connectWallet} className='h-fit py-2 px-3 bg-button1-color rounded-lg shadow-lg text-sm hover:bg-green-900'>Connect Wallet</button>
              )

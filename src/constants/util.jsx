@@ -1,7 +1,7 @@
 export const userInstructions = [
     {instruction : "Your Age must be 18 or more"},
     {instruction : "Firstly, you need to register for getting access of voting and becoming a candidate"},
-    {instruction : "To become a candidate you must pay 0.001 sepolia eth as registration fee"}
+    {instruction : "Only people who are registered with age more than 25 can become a candidate"}
 ]
 
 export const Candidates = [

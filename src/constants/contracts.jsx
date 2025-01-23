@@ -1,8 +1,8 @@
-import { ethers } from "ethers"
+import Web3 from "web3"
 
-const CONTRACT_ADDRESS = "0xd5e6c6f9c6bdd68d6add510628d0335bb3a32321"
+export const CONTRACT_ADDRESS = "0xd5e6c6f9c6bdd68d6add510628d0335bb3a32321"
 
-const CONTRACT_ABI = [
+export const CONTRACT_ABI = [
 	{
 		"anonymous": false,
 		"inputs": [
@@ -183,6 +183,10 @@ const CONTRACT_ABI = [
 	}
 ]
 
-export const getContract = (provider) => {
-    return new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider.getSigner());
+export const creatContractInstance = (web3) => {
+	if(!web3){
+		throw new Error("Web3 instance is required to create a new contract");
+	}
+
+	return new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 }
