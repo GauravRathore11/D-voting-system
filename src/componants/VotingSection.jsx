@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { createContractInstance } from '../constants/contracts';
+import { WalletContext } from '../constants/walletContext';
 
 const inputStyle = "border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500";
 
 const VotingSection = () => {
 
   const [voteUpdate, setVoteUpdate] = useState("Vote for this candidate");
+  const { web3 , userAddress} = useContext(WalletContext);
 
   return (
     <div className='w-full'>

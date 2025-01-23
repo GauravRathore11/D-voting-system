@@ -1,6 +1,4 @@
-import Web3 from "web3"
-
-export const CONTRACT_ADDRESS = "0xd5e6c6f9c6bdd68d6add510628d0335bb3a32321"
+ export const CONTRACT_ADDRESS = "0xd5e6c6f9c6bdd68d6add510628d0335bb3a32321"
 
 export const CONTRACT_ABI = [
 	{
@@ -183,7 +181,7 @@ export const CONTRACT_ABI = [
 	}
 ]
 
-export const creatContractInstance = (web3) => {
+export const createContractInstance = (web3) => {
 	if(!web3){
 		throw new Error("Web3 instance is required to create a new contract");
 	}

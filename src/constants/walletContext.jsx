@@ -10,19 +10,6 @@ const WalletProvider = ({children}) => {
 
     const connectWallet = async () => {
 
-        useEffect(() => {
-        if (window.ethereum) {
-            // Automatically update address when accounts change
-            window.ethereum.on("accountsChanged", (accounts) => {
-                if (accounts.length === 0) {
-                    setUserAddress(""); // No accounts connected
-                } 
-                else {
-                    setUserAddress(accounts[0]); // Update to the new account
-                    }
-                });
-            }
-        }, []);
 
         if(typeof window.ethereum !== "undefined") {
             try{

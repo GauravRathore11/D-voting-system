@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useContext } from 'react';
 import { WalletContext } from '../constants/walletContext';
-import { creatContractInstance } from '../constants/contracts';
+import { createContractInstance } from '../constants/contracts';
 const inputStyle = "border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500";
 
 const RegistrationSection = () => {
@@ -13,6 +13,7 @@ const RegistrationSection = () => {
 
   const registrationButtonClick = async (name, age) => {
     try{
+
         if(!name || !age) {
           setRegistrationUpdate("Please enter both the values");
           return;
@@ -23,7 +24,7 @@ const RegistrationSection = () => {
           return;
         }
 
-        const contract = creatContractInstance(web3);
+        const contract = createContractInstance(web3);
         const receipt =  await contract.methods.personRegistration(name, age).send({ from : userAddress });
         
         const event = receipt.events.registrationStatus;
@@ -50,7 +51,9 @@ const RegistrationSection = () => {
               <input type="number" placeholder='Age' className={inputStyle} value={age} onChange={(e) => setAge(e.target.value)}/>
 
               <div className='flex justify-start items-center space-x-3'>
-                <button onClick={() => registrationButtonClick(name, age)} className='px-3 py-1 bg-green-600 rounded-lg border hover:bg-green-900'>Submit</button>
+                <button onClick={() => registrationButtonClick(name, age)} className='px-3 py-1 bg-green-600 rounded-lg border hover:bg-green-900'>
+                  submit
+                </button>
                 <p>{registrationUpdate}</p>
               </div>
             </div>
