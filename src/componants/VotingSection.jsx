@@ -8,6 +8,36 @@ const VotingSection = () => {
 
   const [voteUpdate, setVoteUpdate] = useState("Vote for this candidate");
   const { web3 , userAddress} = useContext(WalletContext);
+  const [ voteAddress, setVoteAddress ] = useState("");
+  const [ isLoading, setIsLoading ] = useState(false);
+
+  const voteFunction = async (voteAddress) => {
+    if(voteAddress === ""){
+      setVoteUpdate("Invalid user address");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try{
+      const contract = createContractInstance(web3);
+      const receipt = await contract.methods.vote(voteAddress).send({from:userAddress});
+
+      const event = receipt.events.voted;
+
+      if(event){
+        setVoteUpdate("You have voted successfully");
+      }
+      else{
+        setVoteUpdate("Voting process terminated");
+      }
+    }catch(error){
+      console.error(error);
+      setVoteUpdate(error.message);
+    }finally{
+      setIsLoading(false);
+    }
+  }
 
   return (
     <div className='w-full'>
@@ -19,10 +49,12 @@ const VotingSection = () => {
           using their public address
         </h1>
 
-        <input type="text" placeholder='public id/address of candidate' className={inputStyle} />
+        <input onChange={(e) => setVoteAddress(e.target.value)} value={voteAddress} type="text" placeholder='public id/address of candidate' className={inputStyle} />
         
         <div className='flex justify-start items-center space-x-3'>
-            <button className='px-4 py-1 bg-green-600 rounded-lg border hover:bg-green-900'>Vote</button>
+            <button disabled={isLoading} onClick={() => voteFunction(voteAddress)} className='px-4 py-1 bg-green-600 rounded-lg border hover:bg-green-900'>
+              {isLoading? 'processing' : 'Vote'}
+            </button>
             <p>{voteUpdate}</p>
         </div>
 

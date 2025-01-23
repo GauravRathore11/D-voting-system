@@ -25,9 +25,7 @@ const BecomeCandidate = () => {
 
     }catch(error){
       console.error(error);
-
-      const errorMessage = parseErrorMessage(error);
-      setBecomeCandidateUpdate(errorMessage);
+      setBecomeCandidateUpdate(error.message);
     }
     finally {
       setIsLoading(false);

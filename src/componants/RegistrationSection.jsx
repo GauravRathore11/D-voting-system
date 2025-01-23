@@ -36,8 +36,7 @@ const RegistrationSection = () => {
           setRegistrationUpdate("Registration success, but no event emitted");
         }
       }catch(error) {
-        const errorMessage = parseErrorMessage(error);
-        setRegistrationUpdate(errorMessage);
+        setRegistrationUpdate(error.message);
       }
     }
 

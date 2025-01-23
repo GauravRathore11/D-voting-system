@@ -12,9 +12,9 @@ const Header = () => {
     <div className='p-2'>
       <div className='rounded-lg top-0 w-full bg-gradient-to-r from-button1-color to-nav1-color py-4 px-4'>
         
-        <div className='flex flex-wrap justify-between items-center'>
+        <div className='space-y-3 flex flex-wrap justify-between items-center'>
           <span className='text-semibold text-1xl sm:text-4xl lg:text-5xl w-full lg:w-2/3'>
-             <span className='text-semibold text-1xl sm:text-4xl lg:text-5xl bg-nav2-color text-transparent bg-clip-text'>Decentralized {" "}</span>
+             <span className='text-semibold text-[32px] sm:text-4xl lg:text-5xl bg-nav2-color text-transparent bg-clip-text'>Decentralized {" "}</span>
              Voting System</span>
           
           <div className='w-full lg:w-1/3 flex justify-start lg:justify-end'>
@@ -29,7 +29,7 @@ const Header = () => {
         </div>
 
         <div className='p-1'>
-          <p className='text-para-color'>{Description}</p>
+          <p className='text-para-color text-sm'>{Description}</p>
         </div>
 
       </div>
