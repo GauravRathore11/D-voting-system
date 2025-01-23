@@ -7,6 +7,7 @@ const Header = () => {
 
   const { connectWallet, userAddress } = useContext(WalletContext);
 
+
   return (
     <div className='p-2'>
       <div className='rounded-lg top-0 w-full bg-gradient-to-r from-button1-color to-nav1-color py-4 px-4'>

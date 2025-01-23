@@ -36,7 +36,7 @@ const RegistrationSection = () => {
         }
       }catch(error) {
         const errorMessage = parseErrorMessage(error);
-        setRegistrationUpdate("errorMessage");
+        setRegistrationUpdate(errorMessage);
       }
     }
 
