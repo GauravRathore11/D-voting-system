@@ -11,10 +11,10 @@ const WalletProvider = ({children}) => {
 
     const connectWallet = async () => {
 
-        if(typeof window.ethereum !== "undefined") {
+        if(window.ethereum) {
             try{
                 //request account access
-                await window.ethereum.request({ method: "eth_requestAccounts" });
+                const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
 
                 //set new web3 instance
                 const web3Instance = new Web3(window.ethereum);
@@ -23,8 +23,6 @@ const WalletProvider = ({children}) => {
                 // localStorage.setItem("userAddress", userAddress);
                 // localStorage.setItem("web3Provider", window.ethereum);
 
-                // Get the user's account
-                const accounts = await web3.eth.getAccounts();
                 setUserAddress(accounts[0]);
 
                 console.log("Connected wallet address:", accounts[0]);
@@ -52,3 +50,41 @@ const WalletProvider = ({children}) => {
 }
 
 export default WalletProvider;
+
+
+
+
+// const connectWallet = async () => {
+
+//         if(window.ethereum) {
+//             try{
+//                 //request account access
+//                 const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+
+//                 //set new web3 instance
+//                 const web3Instance = new Web3(window.ethereum);
+//                 setWeb3(web3Instance);
+
+//                 // localStorage.setItem("userAddress", userAddress);
+//                 // localStorage.setItem("web3Provider", window.ethereum);
+
+//                 // Get the user's account
+//                 // const accounts = await web3.eth.getAccounts();
+//                 setUserAddress(accounts[0]);
+
+//                 console.log("Connected wallet address:", accounts[0]);
+
+//             }catch(error){
+//                 if(error.code === 4001) {
+//                     console.log("Connection request rejected by the user");
+//                 }
+//                 else{
+//                     console.log("yo hai", error);
+//                 }
+//             }
+//         }
+//         else{
+//             console.log("No wallet found");
+//             alert("Please install a web3 wallet");
+//         }
+//     };
