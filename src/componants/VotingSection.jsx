@@ -7,7 +7,7 @@ const inputStyle = "border border-gray-300 rounded-lg p-2 w-full focus:outline-n
 const VotingSection = () => {
 
   const [voteUpdate, setVoteUpdate] = useState("Vote for this candidate");
-  const { web3 , userAddress} = useContext(WalletContext);
+  const { web3 , userAddress, setTransaction} = useContext(WalletContext);
   const [ voteAddress, setVoteAddress ] = useState("");
   const [ isLoading, setIsLoading ] = useState(false);
 
@@ -17,9 +17,9 @@ const VotingSection = () => {
       return;
     }
 
-    setIsLoading(true);
-
     try{
+      setIsLoading(true);
+      setTransaction(true);
       const contract = createContractInstance(web3);
       const receipt = await contract.methods.vote(voteAddress).send({from:userAddress});
 
@@ -36,6 +36,7 @@ const VotingSection = () => {
       setVoteUpdate(error.message);
     }finally{
       setIsLoading(false);
+      setTransaction("start");
     }
   }
 

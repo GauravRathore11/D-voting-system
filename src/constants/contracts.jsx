@@ -1,6 +1,6 @@
 import Web3 from "web3";
 
-export const CONTRACT_ADDRESS = "0xf7a5b8828db35ed0491b0b58061a737048a06bef"
+export const CONTRACT_ADDRESS = "0x089ed45412d0fa7adb3528f8126e4be9e603e3ea"
 
 export const CONTRACT_ABI = [
 	{
@@ -86,6 +86,19 @@ export const CONTRACT_ABI = [
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getCandidateCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",

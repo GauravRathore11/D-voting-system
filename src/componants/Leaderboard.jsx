@@ -4,38 +4,48 @@ import { createContractInstance } from '../constants/contracts';
 import { WalletContext } from '../constants/walletContext';
 
 const Leaderboard = () => {
-  const { web3 } = useContext(WalletContext);
+  const { web3, userAddress, transaction} = useContext(WalletContext);
   const [candidates, setCandidates] = useState([]);
 
   useEffect(() => {
     const fetchCandidateDetails = async () => {
-        try{
+        try {
             const contract = createContractInstance(web3);
 
-            //fetch addresses array -> candidates;
-            const candidateAddresses = await contract.methods.candidates().call();
+            //get count of all candidates
+            const candidateCount = await contract.methods.getCandidateCount().call();
 
-            //fetch details for each candidate
+            console.log("count : "+candidateCount);
+
+            //fetch addresses of all candiates using for loop
+            const candidateAddresses = [];
+            
+            for(let i=0;i<candidateCount;++i) 
+                candidateAddresses.push(await contract.methods.candidates(i).call());
+            
+            //we have address list now use these addresses to fetch candidate details
             const candidateDetails = await Promise.all(
                 candidateAddresses.map(async (address) => {
                     const candidate = await contract.methods.registeredAccounts(address).call();
-                    return({
+
+                    return {
                         address,
                         name : candidate.name,
                         age : candidate.age,
                         votes : candidate.voteCount
-                    });
+                    };
                 })
             );
 
+            console.log(candidateDetails);
             setCandidates(candidateDetails);
-        }catch(error){
+        } catch (error) {
             console.log(error.message);
         }
     }
 
     fetchCandidateDetails();
-  }, [web3]);
+  },[web3, userAddress, transaction]);
 
   return (
     <div className='bg-gradient-to-r from-nav2-color to-nav1-color w-full rounded-lg p-2'>
@@ -50,8 +60,8 @@ const Leaderboard = () => {
             {candidates.map((candidate, index) => (
                 <div key={index} className='bg-button1-color rounded-lg p-2 mb-2'>
                     <div className='flex justify-between'>
-                        <h1>{candidate.name}(Age : {candidate.age})</h1>
-                        <h1>{candidate.voteCount}</h1>
+                        <h1>{candidate.name}(Age : {Number(candidate.age)})</h1>
+                        <h1>{Number(candidate.votes)}</h1>
                     </div>
                     <h5 className='text-neutral-500 text-sm'>{candidate.address}</h5>
                 </div>

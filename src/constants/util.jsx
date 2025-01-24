@@ -1,7 +1,8 @@
 export const userInstructions = [
     {instruction : "Your Age must be 18 or more"},
     {instruction : "Firstly, you need to register for getting access of voting and becoming a candidate"},
-    {instruction : "Only people who are registered with age more than 25 can become a candidate"}
+    {instruction : "Only people who are registered with age more than 25 can become a candidate"},
+    {instruction : "transaction will fail if you try to re-register, re-vote or break rules/instructions."}
 ]
 
 export const Candidates = [

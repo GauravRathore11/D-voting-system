@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { WalletContext } from '../constants/walletContext';
 import {createContractInstance} from '../constants/contracts.jsx';
 const inputStyle = "border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500";
@@ -6,11 +6,17 @@ const inputStyle = "border border-gray-300 rounded-lg p-2 w-full focus:outline-n
 const BecomeCandidate = () => {
   const [becomeCandidateUpdate, setBecomeCandidateUpdate] = useState("Request to become a candidate");
   const [isLoading, setIsLoading] = useState(false);
-  const { userAddress , web3 } =useContext(WalletContext);
+  const { userAddress , web3, setTransaction } =useContext(WalletContext);
+
+  useEffect(() => {
+
+  }, []);
 
   const becomeCandidateButton = async () => {
     try{
       setIsLoading(true);
+      setTransaction(true);
+
       const contract = createContractInstance(web3);
       const receipt = await contract.methods.candidateRegistration().send({from: userAddress});
 
@@ -29,6 +35,7 @@ const BecomeCandidate = () => {
     }
     finally {
       setIsLoading(false);
+      setTransaction(false);
     }
   }
 

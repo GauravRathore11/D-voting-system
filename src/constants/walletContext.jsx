@@ -7,9 +7,9 @@ const WalletProvider = ({children}) => {
 
     const [userAddress, setUserAddress] = useState("");
     const [web3, setWeb3] = useState(null);
+    const [transaction, setTransaction] = useState(false);
 
     const connectWallet = async () => {
-
 
         if(typeof window.ethereum !== "undefined") {
             try{
@@ -17,7 +17,11 @@ const WalletProvider = ({children}) => {
                 await window.ethereum.request({ method: "eth_requestAccounts" });
 
                 //set new web3 instance
-                setWeb3(new Web3(window.ethereum));
+                const web3Instance = new Web3(window.ethereum);
+                setWeb3(web3Instance);
+
+                // localStorage.setItem("userAddress", userAddress);
+                // localStorage.setItem("web3Provider", window.ethereum);
 
                 // Get the user's account
                 const accounts = await web3.eth.getAccounts();
@@ -41,7 +45,7 @@ const WalletProvider = ({children}) => {
     };
 
     return (
-        <WalletContext.Provider value={{ web3, userAddress, connectWallet }}>
+        <WalletContext.Provider value={{ web3, userAddress, transaction, setTransaction, setUserAddress, setWeb3 , connectWallet }}>
             {children}
         </WalletContext.Provider>
     )
